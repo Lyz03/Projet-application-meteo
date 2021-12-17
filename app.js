@@ -13,7 +13,7 @@ let call = function(city) {
                  citySpan.innerText = data.name;
                  temperatureSpan.innerText = data.main.temp + "°C";
                  humiditySpan.innerText = data.main.humidity + '%';
-                 windSpan.innerText = data.wind.speed + "m/s";
+                 windSpan.innerText = Math.round(parseFloat(data.wind.speed) * 3.6).toString()+ "km/m";
                  descriptionSpan.innerText = data.weather[0].description;
                  feelsLikeSpan.innerText = data.main.feels_like + "°C";
             })
@@ -35,7 +35,7 @@ const windSpan = document.querySelector("#wind span");
 const descriptionSpan = document.querySelector("#description span");
 const feelsLikeSpan = document.querySelector("#feels_like span");
 
-const submit = document.querySelector("input[type=submit]");
+const submit = document.querySelector("#form button");
 const input = document.querySelector("input[type=text]");
 
 
