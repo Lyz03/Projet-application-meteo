@@ -7,18 +7,20 @@ const apiKey = "a607699cd5d0d11e490df29ccbc983c8";
 let call = function(city) {
         const url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=metric&lang=fr";
 
-        fetch(url)
-            .then(response => response.json()
-                .then((data) => {
-                        cityP.innerText = data.name;
-                        temperatureP.innerText = data.main.temp + "°C";
-                        humidityP.innerText = data.main.humidity + '%';
-                        windP.innerText = data.wind.speed + "m/s";
-                })
-            )
-            .catch((error) => {
-                    errorP.innerText = "Une erreur est survenue, pensez a vérifier l'orthographe"
-            } )
+    fetch(url)
+        .then(response => response.json()
+             .then((data) => {
+                 citySpan.innerText = data.name;
+                 temperatureSpan.innerText = data.main.temp + "°C";
+                 humiditySpan.innerText = data.main.humidity + '%';
+                 windSpan.innerText = data.wind.speed + "m/s";
+                 descriptionSpan.innerText = data.weather[0].description;
+                 feelsLikeSpan.innerText = data.main.feels_like + "°C";
+            })
+        )
+        .catch((error) => {
+                errorP.innerText = "Une erreur est survenue, pensez a vérifier l'orthographe"
+        } )
 }
 
 call("Paris")
@@ -26,10 +28,13 @@ call("Paris")
 
 const errorP = document.querySelector("#form p");
 
-const cityP = document.querySelector("#city p");
-const temperatureP = document.querySelector("#temperature p");
-const humidityP = document.querySelector("#humidity p");
-const windP = document.querySelector("#wind p");
+const citySpan = document.querySelector("#city span");
+const temperatureSpan = document.querySelector("#temperature span");
+const humiditySpan = document.querySelector("#humidity span");
+const windSpan = document.querySelector("#wind span");
+const descriptionSpan = document.querySelector("#description span");
+const feelsLikeSpan = document.querySelector("#feels_like span");
+
 const submit = document.querySelector("input[type=submit]");
 const input = document.querySelector("input[type=text]");
 
