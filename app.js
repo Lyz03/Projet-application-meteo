@@ -13,7 +13,7 @@ let call = function(city) {
                  citySpan.innerText = data.name;
                  temperatureSpan.innerText = data.main.temp + "°C";
                  humiditySpan.innerText = data.main.humidity + '%';
-                 windSpan.innerText = Math.round(parseFloat(data.wind.speed) * 3.6).toString()+ "km/m";
+                 windSpan.innerText = Math.round(parseFloat(data.wind.speed) * 3.6).toString()+ "km/h";
                  descriptionSpan.innerText = data.weather[0].description;
                  feelsLikeSpan.innerText = data.main.feels_like + "°C";
             })
